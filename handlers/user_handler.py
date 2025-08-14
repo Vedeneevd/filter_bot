@@ -33,7 +33,8 @@ async def get_history(message: Message, state: FSMContext):
 async def get_name(message: Message, state: FSMContext):
     data = await state.update_data(name=message.text)
     await state.clear()
-    await message.answer('Спасибо! Информация принята')
+    await message.answer(f"Спасибо, {data['name']}! Ваша история принята.")
+
 
 
 @user_router.message(F.text == 'Задать вопрос')
