@@ -7,6 +7,8 @@ import dotenv
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
+from handlers.user_handler import user_router
+
 dotenv.load_dotenv()
 
 # Настройка логирования
@@ -19,6 +21,8 @@ logger = logging.getLogger(__name__)
 TOKEN = os.getenv("BOT_TOKEN")
 
 dp = Dispatcher()
+
+dp.include_router(user_router)
 
 async def main():
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
